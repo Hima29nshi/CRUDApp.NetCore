@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using CRUDApp.DataAccess;
+﻿using CRUDApp.DataAccess;
 using CRUDApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
