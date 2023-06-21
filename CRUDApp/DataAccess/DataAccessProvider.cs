@@ -6,7 +6,7 @@ namespace CRUDApp.DataAccess
     public interface IDataAccessProvider
     {
         Task<int> AddEmployeeRecordAsync(EmployeeModel employee);
-        Task<int> UpdateEmployeeRecordAsync(EmployeeModel employee);
+        Task<int> UpdateEmployeeRecordAsync(EmployeeModel employee, int id);
         Task<int> DeleteEmployeeRecordAsync(int id);
         Task<EmployeeModel> GetEmployeeRecordByIdAsync(int id);
         Task<List<EmployeeModel>> GetAllEmployeeRecordAsync();
@@ -31,13 +31,18 @@ namespace CRUDApp.DataAccess
             return 0;
         }
         
-        public async Task<int> UpdateEmployeeRecordAsync(EmployeeModel employee) {
-            if(employee != null) 
-            { 
-                _dbContext.Update(employee);
-                await _dbContext.SaveChangesAsync();
-                return 1;
-            }
+        public async Task<int> UpdateEmployeeRecordAsync(EmployeeModel employee,int id) {
+            var entityFromDb = await _dbContext.employee.FirstOrDefaultAsync(t => t.e_id == id);
+            if(entityFromDb != null)
+            {
+                if (_dbContext.Entry(employee).State == EntityState.Detached)
+                {
+                    _dbContext.Entry(entityFromDb).CurrentValues.SetValues(employee);
+                    await _dbContext.SaveChangesAsync();
+                    return 1;
+                }
+                return 0;
+            }            
             return 0;
         }
 

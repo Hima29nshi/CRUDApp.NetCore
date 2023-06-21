@@ -1,8 +1,8 @@
-﻿using CRUDApp.DataAccess;
+﻿using AutoMapper;
+using CRUDApp.DataAccess;
 using CRUDApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace CRUDApp.Controllers
 {
@@ -12,11 +12,13 @@ namespace CRUDApp.Controllers
     {
         private IDataAccessProvider _dataAccessProvider;
         private ILogger _logger;
+        private IMapper _mapper;
 
-        public EmployeesController(IDataAccessProvider dataAccessProvider, ILoggerFactory logger)
+        public EmployeesController(IDataAccessProvider dataAccessProvider, ILoggerFactory logger,IMapper mapper)
         {
             _dataAccessProvider = dataAccessProvider;
             _logger = logger.CreateLogger("EmployeeDBCRUD");
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -36,8 +38,8 @@ namespace CRUDApp.Controllers
             }
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateEmployeeRecord(EmployeeModel employee)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEmployeeRecord(int id,EmployeeModel employee)
         {
             _logger.LogInformation($"Initiating updation of an employee named {employee.first_name}");
             ///summary
@@ -46,21 +48,37 @@ namespace CRUDApp.Controllers
             ///validation rules were broken during the model binding process.
             ///summary
             ///
-            if(ModelState.IsValid)
+            try
             {
-                try
+                if(employee is null)
                 {
-                    await _dataAccessProvider.UpdateEmployeeRecordAsync(employee);
-                    _logger.LogInformation($"Data of {employee.first_name} updated successfully");
-                    return Ok($"Successfully updated the data of {employee.first_name}");
+                    _logger.LogError("No object found");
+                    return BadRequest("No object found");
                 }
-                catch (Exception)
+
+                if (!ModelState.IsValid)
                 {
-                    _logger.LogError("Employee not found");
-                    return NotFound("Employee not found");
+                    _logger.LogError("Object input is not of the correct format");
+                    return BadRequest("Object input is not of the correct format");
+                }
+
+                int res = await _dataAccessProvider.UpdateEmployeeRecordAsync(employee,id);
+                if (res != 0)
+                {
+                    _logger.LogInformation($"Data of {employee.first_name} updated successfully");
+                    return Ok($"Data of {employee.first_name} updated successfully");
+                }
+                else
+                {
+                    _logger.LogError($"Employee with {id} not found");
+                    return NotFound($"Employee with {id} not found");
                 }
             }
-            return BadRequest("Error while updating the data");
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside UpdateOwner action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpGet]
