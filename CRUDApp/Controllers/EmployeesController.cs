@@ -11,13 +11,11 @@ namespace CRUDApp.Controllers
     {
         private IDataAccessProvider _dataAccessProvider;
         private ILogger _logger;
-        private IMapper _mapper;
 
-        public EmployeesController(IDataAccessProvider dataAccessProvider, ILoggerFactory logger,IMapper mapper)
+        public EmployeesController(IDataAccessProvider dataAccessProvider, ILoggerFactory logger)
         {
             _dataAccessProvider = dataAccessProvider;
             _logger = logger.CreateLogger("EmployeeDBCRUD");
-            _mapper = mapper;
         }
 
         [HttpPost]
