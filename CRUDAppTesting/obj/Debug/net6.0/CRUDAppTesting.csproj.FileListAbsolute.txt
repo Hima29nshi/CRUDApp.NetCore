@@ -127,3 +127,10 @@ C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\obj\Debug\net6.0\refi
 C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\obj\Debug\net6.0\CRUDAppTesting.pdb
 C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\obj\Debug\net6.0\CRUDAppTesting.genruntimeconfig.cache
 C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\obj\Debug\net6.0\ref\CRUDAppTesting.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDAppTesting\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

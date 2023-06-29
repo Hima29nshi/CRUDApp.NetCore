@@ -2,14 +2,20 @@ using CRUDApp.Controllers;
 using CRUDApp.DataAccess;
 using CRUDApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 
 namespace CRUDAppTesting
 {
     public class UnitTestController
     {
+        static ILogger<EmployeesController> logger = new NullLogger<EmployeesController>();
         static Mock<IDataAccessProvider> mock = new Mock<IDataAccessProvider>();
-        EmployeesController employeesController = new EmployeesController(mock.Object);
+
+        EmployeesController employeesController = new EmployeesController(mock.Object,logger);
+
+
         
         [Fact]
         public async void GetByIdExistingReturnsCorrectResult()
@@ -35,6 +41,7 @@ namespace CRUDAppTesting
         public async void GetByIdNonExistingReturnsNotFoundResult()
         {
             var empNotFoundObject = await employeesController.GetEmployeeRecordById(656);
+            logger.LogError("StatusCode 404: Not Found Object");
             Assert.IsType<NotFoundObjectResult>(empNotFoundObject);
         }
 
