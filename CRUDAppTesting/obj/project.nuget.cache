@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "04PDFPUwXOxcrVTJ9p18DHwOUH4gAvCLPW7i9K11xTIFsHS5UGjjUbTwPINoul83q8JXZ/tZFzXblinpgcg5mw==",
+  "dgSpecHash": "6MewlmxxF28tNsZAqvr3WysuAJGZ6pCkmJvNZfP/NBFBRsu1Ocq1tB9RysibEvV9Z1wVuSL+idw0lhu5BdnnBw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Himanshi Jain\\source\\repos\\CRUDApp\\CRUDAppTesting\\CRUDAppTesting.csproj",
   "expectedPackageFiles": [
@@ -39,7 +39,7 @@
     "C:\\Users\\Himanshi Jain\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Himanshi Jain\\.nuget\\packages\\moq\\4.18.4\\moq.4.18.4.nupkg.sha512",
     "C:\\Users\\Himanshi Jain\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\Himanshi Jain\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Himanshi Jain\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Himanshi Jain\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512",
     "C:\\Users\\Himanshi Jain\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.4\\npgsql.entityframeworkcore.postgresql.7.0.4.nupkg.sha512",
     "C:\\Users\\Himanshi Jain\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",

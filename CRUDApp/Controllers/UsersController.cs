@@ -21,16 +21,20 @@ namespace CRUDApp.Controllers
 
         private UserModel AuthenticateUser(UserModel user)
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             UserModel _user = null;
-            if(user.username == "admin" && user.password == "12345")
+            if (user.username == "admin" && user.password == "12345")
             {
                 _user = new UserModel {username = "Himanshi Jain" };
             }
-            return _user;
+
+#pragma warning disable CS8603 // Possible null reference return.
+            return _user != null?_user:null;
         }
 
         private string GenerateToken(UserModel user)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWTSettings:Key"]));
             var credentials = new SigningCredentials(securityKey,SecurityAlgorithms.HmacSha256);
 

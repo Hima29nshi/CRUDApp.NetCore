@@ -32,18 +32,15 @@ namespace CRUDApp.DataAccess
         }
         
         public async Task<int> UpdateEmployeeRecordAsync(EmployeeModel employee,int id) {
-            var emp = await _dbContext.employee.FirstOrDefaultAsync(t => t.e_id == id);
+            var emp = _dbContext.employee.FirstOrDefault(t=>t.e_id==id);
             if(emp != null)
             {
-                if (_dbContext.Entry(employee).State == EntityState.Detached)
-                {
-                    _dbContext.Entry(emp).CurrentValues.SetValues(employee);
-                    await _dbContext.SaveChangesAsync();
-                    return 1;
-                }
-                return 0;
-            }            
+                var res = _dbContext.employee.Update(employee);
+                await _dbContext.SaveChangesAsync();
+                return 1;
+            }
             return 0;
+
         }
 
         public async Task<int> DeleteEmployeeRecordAsync(int id) { 

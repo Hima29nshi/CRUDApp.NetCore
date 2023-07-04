@@ -1,5 +1,7 @@
 using CRUDApp.DataAccess;
+using CRUDApp.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -43,9 +45,35 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
+
+
+    app.UseExceptionHandler(error =>
+    {
+        error.Run(async context =>
+        {
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            context.Response.ContentType = "application/json";
+            var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+
+            if (contextFeature != null)
+            {
+                app.Logger.LogError($"Something went wrong in the {contextFeature.Error}");
+
+                await context.Response.WriteAsync(new ErrorModel
+                {
+                    StatusCode = context.Response.StatusCode,
+                    Message = "Internal Server Error. Please Try Again Later"
+                }.ToString());
+            }
+        });
+    });
+
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 
