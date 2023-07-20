@@ -4,15 +4,26 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using NLog.Extensions.Logging;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.ConfigureLogging((context, logger) =>
+{
+    logger.AddConfiguration(context.Configuration.GetSection("Logging"));
+    logger.AddConsole();
+    logger.AddDebug();
+    logger.AddEventSourceLogger();
+    logger.AddNLog();
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 //Adding services for JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
@@ -58,7 +69,7 @@ if (app.Environment.IsDevelopment())
 
             if (contextFeature != null)
             {
-                app.Logger.LogError($"Something went wrong in the {contextFeature.Error}");
+                app.Logger.LogError($"{DateTime.Now}: Something went wrong in the {contextFeature.Error}");
 
                 await context.Response.WriteAsync(new ErrorModel
                 {

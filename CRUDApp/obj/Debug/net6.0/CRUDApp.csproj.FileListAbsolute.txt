@@ -56,3 +56,7 @@ C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDApp\bin\Debug\net6.0\Microsoft.I
 C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDApp\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDApp\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDApp\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDApp\bin\Debug\net6.0\nlog.config
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDApp\bin\Debug\net6.0\NLog.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDApp\bin\Debug\net6.0\NLog.Extensions.Logging.dll
+C:\Users\Himanshi Jain\source\repos\CRUDApp\CRUDApp\bin\Debug\net6.0\NLog.Web.AspNetCore.dll

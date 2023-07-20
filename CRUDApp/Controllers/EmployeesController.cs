@@ -19,7 +19,7 @@ namespace CRUDApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddEmployeeRecord([FromBody] EmployeeModel employee)
+        public async Task<IActionResult> AddEmployeeRecord(EmployeeModel employee)
         {
             _logger.LogInformation($"{DateTime.Now}: Initiating addition of an employee named {employee.first_name}");
 
